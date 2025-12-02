@@ -5,8 +5,16 @@ from pathlib import Path
 
 from loguru import logger
 
-LOG_DIR = Path().resolve().parent / "log"
-LOG_DIR.mkdir(exist_ok=True)
+# dirs
+BASE_DIR = Path(__file__).resolve().parent.parent
+DATA_DIR = BASE_DIR / "data"
+INTERIM_DIR = BASE_DIR / "interim"
+RAW_DIR = DATA_DIR / "raw"
+PROCESSED_DIR = DATA_DIR / "processed"
+LOG_DIR = BASE_DIR / "log"
+
+DIRS = [DATA_DIR, RAW_DIR, INTERIM_DIR, PROCESSED_DIR, LOG_DIR]
+
 
 def setup_logger(log_dir=LOG_DIR): 
     log_dir.mkdir(exist_ok=True)
@@ -46,4 +54,3 @@ def setup_logger(log_dir=LOG_DIR):
     )
 
     return logger
-
