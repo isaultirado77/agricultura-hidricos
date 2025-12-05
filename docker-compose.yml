@@ -2,6 +2,7 @@ version: "3.9"
 
 services:
   etl:
+    container_name: etl_runner
     build: .
     volumes:
       - ./data:/app/data
@@ -10,8 +11,10 @@ services:
       - ./scripts:/app/scripts
       - ./main.py:/app/main.py
     command: uv run python -m main
+    restart: unless-stopped
 
   jupyter:
+    container_name: jupyter_lab
     build: .
     ports:
       - "8888:8888"
@@ -22,3 +25,4 @@ services:
       - ./scripts:/app/scripts
       - ./main.py:/app/main.py
     command: uv run jupyter lab --ip=0.0.0.0 --port=8888 --allow-root
+    restart: unless-stopped
