@@ -1,0 +1,24 @@
+version: "3.9"
+
+services:
+  etl:
+    build: .
+    volumes:
+      - ./data:/app/data
+      - ./log:/app/log
+      - ./etl:/app/etl
+      - ./scripts:/app/scripts
+      - ./main.py:/app/main.py
+    command: uv run python -m main
+
+  jupyter:
+    build: .
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./data:/app/data
+      - ./nb:/app/nb
+      - ./etl:/app/etl
+      - ./scripts:/app/scripts
+      - ./main.py:/app/main.py
+    command: uv run jupyter lab --ip=0.0.0.0 --port=8888 --allow-root

@@ -1,0 +1,25 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.duckdb
+
+# carpetas que NO deben ir dentro del contenedor
+data/*
+!data/
+
+
+# virtual environments
+.env/
+.venv/
+
+# logs locales
+log/*.log
+
+# git
+.git/
+.gitignore
+
+# OS
+.DS_Store
