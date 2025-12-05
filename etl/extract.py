@@ -123,7 +123,7 @@ def extract_data():
         agricultura_path = download_files_concurrently(agricultura_urls, agricultura_dir)
         
         hidricos_urls = get_download_urls(hidricos_url)
-        hidricos_path = download_files_concurrently(hidricos_urls, agricultura_dir)
+        hidricos_path = download_files_concurrently(hidricos_urls, hidricos_dir)
 
         mpios_zip = download_file(municipios_url, mpios_dir)
         mpios_path = unzip_file(mpios_zip, )
